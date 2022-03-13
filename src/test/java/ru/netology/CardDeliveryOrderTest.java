@@ -17,8 +17,7 @@ public class CardDeliveryOrderTest {
         open("http://localhost:9999");
         $("[placeholder=\"Город\"].input__control").setValue("Москва");
         $("[placeholder=\"Дата встречи\"].input__control").doubleClick();
-        $("[placeholder=\"Дата встречи\"].input__control").sendKeys("16.03.2022");
-        $("[placeholder=\"Дата встречи\"].input__control").setValue("16.03.2022");
+        $("[placeholder=\"Дата встречи\"].input__control").sendKeys("17.03.2022");
         $("[name=\"name\"].input__control").setValue("Иванов");
         $("[name=\"phone\"].input__control").setValue("+79334568598");
         $(".checkbox__box").click();
