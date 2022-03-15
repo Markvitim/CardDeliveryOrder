@@ -18,6 +18,10 @@ public class CardDeliveryOrderTest {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
+    public static String generateDateDate(int day) {
+        return LocalDate.now().plusDays(day).format(DateTimeFormatter.ofPattern("dd"));
+    }
+
     @Test
     public void shouldSendFormPlus5Days() {
         String planingDate = generateDate(5);
@@ -35,16 +39,17 @@ public class CardDeliveryOrderTest {
                 + planingDate), Duration.ofSeconds(15));
     }
 
-
     @Test
-    public void shouldSendFormUsePopup() {
+    public void shouldSendFormUsePopup7Days() {
         String planingDate = generateDate(7);
+        String date = generateDateDate(7);
+
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
         $("[placeholder=\"Город\"].input__control").setValue("Мо");
         $$(".menu-item").find(Condition.text("Москва")).click();
-        $(".input__icon").click();
-        $("[data-day=\"1647896400000\"].calendar__day").click();
+        $(".icon-button__content").click();
+        $$("td.calendar__day").findBy(Condition.text(date)).click();
         $("[name=\"name\"].input__control").setValue("Иванов");
         $("[name=\"phone\"].input__control").setValue("+79334568598");
         $(".checkbox__box").click();
